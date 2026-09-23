@@ -111,3 +111,12 @@ A branch `main` representa a versão principal do projeto.
 - Conferir a origem e o destino antes de realizar um Pull Request.
 - Evitar alterar os mesmos arquivos que outros integrantes estão modificando.
 - Manter o histórico do projeto organizado.
+
+## Boas práticas para contribuições
+
+Para manter o projeto organizado, recomenda-se:
+
+- Utilizar nomes de branches claros e relacionados à alteração.
+- Realizar commits pequenos e objetivos.
+- Conferir as alterações antes de realizar o push.
+- Manter a branch atualizada com a `development` quando necessário.
