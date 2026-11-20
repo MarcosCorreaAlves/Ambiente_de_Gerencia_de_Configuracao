@@ -1,0 +1,37 @@
+{% extends "portal_base.html" %}
+
+{% block title %}Meus Empréstimos - Biblioteca App{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">Meu Histórico de Empréstimos</div>
+    <div class="table-wrapper">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Título do Item</th>
+                    <th>Data do Empréstimo</th>
+                    <th>Devolução Prevista</th>
+                    <th>Status</th>
+                    <th>Multa</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for emprestimo in emprestimos %}
+                <tr>
+                    <td>{{ emprestimo.titulo }}</td>
+                    <td>{{ emprestimo.data_emprest.strftime('%d/%m/%Y') }}</td>
+                    <td>{{ emprestimo.data_dev.strftime('%d/%m/%Y') }}</td>
+                    <td><span class="status status-{{ emprestimo.status.lower() }}">{{ emprestimo.status }}</span></td>
+                    <td>R$ {{ '%.2f'|format(emprestimo.multa|float) }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5" style="text-align: center;">Você ainda não possui empréstimos.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
