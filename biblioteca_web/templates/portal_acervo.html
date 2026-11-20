@@ -1,0 +1,50 @@
+{% extends "portal_base.html" %}
+
+{% block title %}Consulta de Acervo - Biblioteca App{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">Consulta ao Acervo</div>
+    <form method="GET" class="mb-3">
+        <div class="form-group">
+            <label for="busca">Buscar por Título</label>
+            <div style="display: flex; gap: 10px;">
+                <input type="search" name="busca" id="busca" class="form-control" placeholder="Digite o título do livro..." value="{{ termo_busca or '' }}">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </form>
+
+    <div class="table-wrapper">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Ano</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in itens %}
+                <tr>
+                    <td>{{ item.titulo }}</td>
+                    <td>{{ item.autor }}</td>
+                    <td>{{ item.ano or 'N/A' }}</td>
+                    <td>
+                        <!-- CORREÇÃO: Usa o status real do item para a classe e o texto -->
+                        <span class="status status-{{ item.status_item.lower().replace(' ', '-') }}">
+                            {{ item.status_item }}
+                        </span>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" style="text-align: center;">Nenhum item encontrado.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
