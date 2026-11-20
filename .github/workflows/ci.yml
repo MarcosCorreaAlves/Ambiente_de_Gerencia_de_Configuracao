@@ -9,6 +9,9 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: biblioteca_web
 
     steps:
       - name: Baixa o código do repositório
